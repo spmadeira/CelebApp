@@ -8,7 +8,7 @@ interface CelebrityDao{
     @Query("SELECT * FROM celebrity")
     fun getAll(): List<Celebrity>
 
-    @Query("SELECT * FROM celebrity WHERE id LIKE :id")
+    @Query("SELECT * FROM celebrity WHERE celebrity.id LIKE :id")
     fun findById(id: Int): Celebrity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
