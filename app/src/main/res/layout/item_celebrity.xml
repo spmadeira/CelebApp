@@ -16,6 +16,7 @@
 
         <ImageView
             android:id="@+id/item_celebrity_image"
+            android:transitionName="celebrity_image"
             android:layout_width="400dp"
             android:layout_height="400dp"
             app:layout_constraintBottom_toBottomOf="parent"

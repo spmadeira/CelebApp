@@ -17,9 +17,10 @@ class DetailActivity : AppCompatActivity(){
         setContentView(R.layout.activity_detail)
         var index: Int = intent.getIntExtra("celebrity_index", 0)
         //val celebrity = AppDatabase.getInstance(this).celebDao().findById(index)
-        val celebrity = AppDatabase.getInstance(this).celebDao().getAll()[index]
+        val celebrity = AppDatabase.getCelebrities(this)[index]
         celebrityImage = findViewById(R.id.detail_imageview_celebrity)
         celebrityImage.setImageResource(resources.getIdentifier(celebrity.fotoPath, "drawable", packageName))
+        celebrityImage.transitionName = celebrity.name
         celebrityQuote = findViewById(R.id.detail_textview_description)
         val quotes = celebrity.quotes.split(';')
         val quote = quotes.random()

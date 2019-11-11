@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.celebritiesapp.R
 import com.example.celebritiesapp.activity.MainActivity
@@ -28,6 +29,8 @@ class CelebritiesAdapter(val context: Context, val celebrities:List<Celebrity>, 
     override fun onBindViewHolder(holder: CelebrityViewHolder, position: Int) {
         holder.name.text = celebrities[position].name
         holder.foto.setImageResource(context.resources.getIdentifier(celebrities[position].fotoPath, "drawable", context.packageName))
+
+        holder.foto.transitionName = celebrities[position].name
     }
 
     class CelebrityViewHolder(view: View, context: Context, listener: CelebrityClickListener ):RecyclerView.ViewHolder(view){

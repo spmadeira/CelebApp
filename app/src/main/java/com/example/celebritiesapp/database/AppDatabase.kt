@@ -25,6 +25,15 @@ abstract class AppDatabase : RoomDatabase(){
     companion object {
         @Volatile
         private var instance : AppDatabase? = null
+        private var celebrities: List<Celebrity>? = null
+
+        fun getCelebrities(context: Context): List<Celebrity>{
+            return celebrities ?: synchronized(this){
+                celebrities ?: getInstance(context).celebDao().getAll().also {
+                    celebrities = it
+                }
+            }
+        }
 
         fun getInstance(context: Context): AppDatabase{
             return instance ?: synchronized(this){
